@@ -1,0 +1,65 @@
+{% include 'overall_header.html' %}
+{% include '@david63_bulkuseradd/head_panel.html' %}
+
+<form id="bulkuseradd" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('BUA_SETTINGS') }}</legend>
+
+		<dl>
+			<dt><label for="bua_sheet_name">{{ lang('SHEET_NAME') }}{{ lang('COLON') }}</label><br /><span>{{ lang('SHEET_NAME_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="bua_sheet_name" type="text" id="bua_sheet_name" value="{{ SHEET_NAME }}" size="20" maxlength="20" validate="string" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="bua_first_data_row">{{ lang('FIRST_DATA_ROW') }}{{ lang('COLON') }}</label><br /><span>{{ lang('FIRST_DATA_ROW_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="bua_first_data_row" type="number" id="bua_first_data_row" value="{{ FIRST_DATA_ROW }}" min="1" max="1048576" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="bua_username_column">{{ lang('USERNAME_COLUMN') }}{{ lang('COLON') }}</label><br /><span>{{ lang('USERNAME_COLUMN_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="bua_username_column" type="text" id="bua_username_column" value="{{ USERNAME_COLUMN }}" size="3" maxlength="3" validate="string" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="bua_email_column">{{ lang('EMAIL_COLUMN') }}{{ lang('COLON') }}</label><br /><span>{{ lang('EMAIL_COLUMN_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="bua_email_column" type="text" id="bua_email_column" value="{{ EMAIL_COLUMN }}" size="3" maxlength="3" validate="string" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="bua_start_date_column">{{ lang('START_DATE_COLUMN') }}{{ lang('COLON') }}</label><br /><span>{{ lang('START_DATE_COLUMN_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="bua_start_date_column" type="text" id="bua_start_date_column" value="{{ START_DATE_COLUMN }}" size="3" maxlength="3" validate="string" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="bua_date_type">{{ lang('DATE_TYPE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('DATE_TYPE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="bua_date_type1" name="bua_date_type" value="1"{% if DATE_TYPE %} checked="checked"{% endif %} />
+				<label class="set" for="bua_date_type1">{{ lang('EUROPEAN') }}</label>
+				<input type="radio" id="bua_date_type0" name="bua_date_type" value="0"{% if not DATE_TYPE %} checked="checked"{% endif %} />
+				<label class="set" for="bua_date_type0">{{ lang('USA') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<p class="submit-buttons">
+			<input class="adm-button" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<input class="adm-button" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+		</p>
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+</form>
+
+{% include '@david63_bulkuseradd/donate.html' %}
+{% include 'overall_footer.html' %}

@@ -1,0 +1,34 @@
+{
+	"name": "david63/bulkuseradd",
+	"type": "phpbb-extension",
+	"description": "Adds the ability to add users from an Excel spreadsheet or a CSV file.",
+	"version": "2.1.0-rc1",
+	"time": "2019-05-11",
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "David Wood",
+			"role": "Developer"
+		},
+		{
+            "name": "PHPOffice",
+            "homepage": "https://github.com/PHPOffice/PhpSpreadsheet",
+            "role": "Developer - PhpSpreadsheet"
+        }
+    ],
+	"require": {
+        "php": ">=5.4.7",
+		"phpoffice/phpspreadsheet": "^1.5"
+    },
+	"extra": {
+		"display-name": "[+] Bulk User Add",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.2.0"
+		},
+		"version-check": {
+        	"host": "version.phpbbdev.space",
+        	"directory": "/3.2",
+        	"filename": "/bulk_user_add_version_file.json"
+    	}
+	}
+}
