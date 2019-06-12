@@ -9,8 +9,6 @@
 
 namespace david63\bulkuseradd\controller;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use phpbb\config\config;
 use phpbb\cache\service;
 use phpbb\request\request;

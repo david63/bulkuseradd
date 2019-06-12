@@ -60,7 +60,7 @@ $lang = array_merge($lang, array(
 	'FIRST_DATA_ROW'				=> 'First data row',
 	'FIRST_DATA_ROW_EXPLAIN'		=> 'The first row on the spreadsheet that contains the data (do not include heading rows).',
 
-    'GENERAL_UPLOAD_ERROR'			=> 'File upload error',
+	'GENERAL_UPLOAD_ERROR'			=> 'File upload error',
 
 	'LAST_FILE'						=> '<strong>The last file uploaded was - %1$s on %2$s</strong>',
 	'LAST_UPDATE'					=> '<strong>The last file update was on %1$s</strong>',
@@ -92,7 +92,7 @@ $lang = array_merge($lang, array(
 	'SHEET_NAME_EXPLAIN'			=> 'The spreadsheet sheet that contains the data.',
 	'START_DATE_COLUMN'				=> 'Start date column',
 	'START_DATE_COLUMN_EXPLAIN'		=> 'The column letter of the spreadsheet that contians the user’s Start Date.<br>If this field is left blank, or there is no entry for a user in this column, then the current date will be used.',
-    'STORE_FOLDER_NOT_WRITABLE'		=> 'The store folder is either missing or is not writable',
+	'STORE_FOLDER_NOT_WRITABLE'		=> 'The store folder is either missing or is not writable',
 
 	'VERSION'						=> 'Version',
 ));

@@ -43,7 +43,7 @@ class version_2_1_0 extends migration
 	}
 
 		public function update_schema()
-	{
+		{
 		return array(
 			'add_columns'	=> array(
 				$this->table_prefix . 'users'	=> array(
