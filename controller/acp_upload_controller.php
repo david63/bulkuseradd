@@ -248,7 +248,7 @@ class acp_upload_controller implements acp_upload_interface
 			$spreadsheet	= $reader->load($input_file_name);
 			$filter_subset 	= new $this->read_filter($first_data_row, $spreadsheet->getActiveSheet()->getHighestDataRow(), $columns);
 			$reader->setReadFilter($filter_subset);
-	   		$sheet_data 	= $spreadsheet->getActiveSheet()->toArray('', true, true, true);
+			$sheet_data 	= $spreadsheet->getActiveSheet()->toArray('', true, true, true);
 
 			// Load the user_add function to allow adding new users
 			if (!function_exists('user_add'))
