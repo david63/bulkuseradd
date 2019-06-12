@@ -30,20 +30,25 @@ class listener implements EventSubscriberInterface
 	/** @var string phpBB extension */
 	protected $php_ext;
 
+	/** @var string phpBB tables */
+	protected $tables;
+
 	/**
 	* Constructor for listener
 	*
 	* @param \phpbb_db_driver	$db			The db connection
 	* @param string 			$root_path	phpBB root path
 	* @param string				$php_ext	phpBB file extension
+	* @param array				$tables		phpBB db tables
 	*
 	* @access public
 	*/
-	public function __construct(driver_interface $db, $root_path, $php_ext)
+	public function __construct(driver_interface $db, $root_path, $php_ext, $tables)
 	{
 		$this->db			= $db;
 		$this->root_path	= $root_path;
 		$this->php_ext		= $php_ext;
+		$this->tables		= $tables;
 	}
 
 	/**
@@ -89,7 +94,7 @@ class listener implements EventSubscriberInterface
 
 		// Get user id from the current session
 		$sql = 'SELECT session_user_id
-			FROM ' . SESSIONS_TABLE . '
+			FROM ' . $this->tables['sessions'] . '
 			WHERE session_id = "' . $session_id . '"';
 
 		$result 	= $this->db->sql_query($sql);
@@ -126,7 +131,7 @@ class listener implements EventSubscriberInterface
 	{
 		// Is this a bulk added user?
 		$sql = 'SELECT user_bulk_add
-			FROM ' . USERS_TABLE . '
+			FROM ' . $this->tables['users'] . '
 			WHERE user_id = ' . $user_id;
 
 		$result 		= $this->db->sql_query($sql);

@@ -175,7 +175,7 @@ would use:
 $locale = 'ru';
 $validLocale = \PhpOffice\PhpSpreadsheet\Settings::setLocale($locale);
 if (!$validLocale) {
-    echo 'Unable to set locale to '.$locale." - reverting to en_us<br />\n";
+    echo 'Unable to set locale to '.$locale." - reverting to en_us<br>\n";
 }
 ```
 

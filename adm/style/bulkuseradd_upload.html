@@ -1,12 +1,11 @@
-{% include 'overall_header.html' %}
-{% include '@david63_bulkuseradd/head_panel.html' %}
+{% include '@' ~ NAMESPACE ~ '/head_panel.html' %}
 
 <form id="file_upload" method="post" {{ S_FORM_ENCTYPE }}>
 	<fieldset>
 		<legend>{{ lang('UPLOAD_FILE') }}</legend>
 
 		<dl>
-			<dt><label for="filename">{{ lang('FILE_UPLOAD') }}{{ lang('COLON') }}</label><br /><span>{{ lang('FILE_UPLOAD_EXPLAIN') }}</span></dt>
+			<dt><label for="filename">{{ lang('FILE_UPLOAD') }}{{ lang('COLON') }}</label><br><span>{{ lang('FILE_UPLOAD_EXPLAIN') }}</span></dt>
 			<dd>
 				<input class="inputbox" type="file" name="filename" id="filename" size="52" />
 			</dd>
@@ -22,13 +21,13 @@
 		<legend>{{ lang('PROCESS') }}</legend>
 
 		<p>{{ lang('PROCESS_FILE_EXPLAIN') }}
-		<hr />
+		<hr>
 		{{ lang('PROCESS_FILE_WARNING') }}</p>
-		<hr />
+		<hr>
 
 		<p class="submit-buttons">
-			{{ LAST_FILE }}<br />
-			{{ LAST_UPDATE}}<br /><br />
+			{{ LAST_FILE }}<br>
+			{{ LAST_UPDATE}}<br><br>
 			<input class="adm-button" type="submit" id="update" name="update" value="{{ lang('PROCESS_UPDATE') }}" />
 		</p>
 		{{ S_FORM_TOKEN }}

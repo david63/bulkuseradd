@@ -42,9 +42,9 @@ $lang = array_merge($lang, array(
 	'BULK_USER_ADD_UPLOAD'				=> 'Bulk user add process',
 
 	'LOG_BULK_USER_ADD'					=> '<strong>Bulk User Add settings updated</strong>',
-	'LOG_BULK_USER_ADD_FAILED'			=> '<strong>Bulk User Add - this user already exists</strong><br />» %1$s',
-	'LOG_BULK_USER_ADD_FILE_UPLOADED'	=> '<strong>Bulk User Add file uploaded</strong><br />» %1$s as %2$s',
-	'LOG_BULK_USER_ADD_NO_EMAIL'		=> '<strong>Bulk User Add -there is no email address for username</strong><br />» %1$s',
-	'LOG_BULK_USER_ADD_NO_USERNAME'		=> '<strong>Bulk User Add - there is no username for email</strong><br />» %1$s',
-	'LOG_BULK_USER_ADD_PROCESSED'		=> '<strong>Bulk User Add file processed</strong><br />» %1$s<br /> %2$s <strong>users added</strong>',
+	'LOG_BULK_USER_ADD_FAILED'			=> '<strong>Bulk User Add - this user already exists</strong><br>» %1$s',
+	'LOG_BULK_USER_ADD_FILE_UPLOADED'	=> '<strong>Bulk User Add file uploaded</strong><br>» %1$s as %2$s',
+	'LOG_BULK_USER_ADD_NO_EMAIL'		=> '<strong>Bulk User Add -there is no email address for username</strong><br>» %1$s',
+	'LOG_BULK_USER_ADD_NO_USERNAME'		=> '<strong>Bulk User Add - there is no username for email</strong><br>» %1$s',
+	'LOG_BULK_USER_ADD_PROCESSED'		=> '<strong>Bulk User Add file processed</strong><br>» %1$s<br> %2$s <strong>users added</strong>',
 ));

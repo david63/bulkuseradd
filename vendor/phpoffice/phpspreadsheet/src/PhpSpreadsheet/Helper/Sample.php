@@ -181,7 +181,7 @@ class Sample
 
     public function log($message)
     {
-        $eol = $this->isCli() ? PHP_EOL : '<br />';
+        $eol = $this->isCli() ? PHP_EOL : '<br>';
         echo date('H:i:s ') . $message . $eol;
     }
 

@@ -13,8 +13,6 @@ use phpbb\extension\base;
 
 class ext extends base
 {
-	const BULK_USER_ADD_VERSION = '2.1.0 RC1';
-
 	/**
 	* Enable extension if phpBB version requirement is met
 	*

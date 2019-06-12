@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: phpbb_tables.yml }
 
 services:
     david63.bulkuseradd.listener:
@@ -8,6 +9,7 @@ services:
             - '@dbal.conn'
             - '%core.root_path%'
             - '%core.php_ext%'
+            - '%tables%'
         tags:
             - { name: event.listener }
 
@@ -20,6 +22,7 @@ services:
             - '@user'
             - '@log'
             - '@language'
+            - '@david63.bulkuseradd.core.functions'
 
     david63.bulkuseradd.acp.upload.controller:
         class: david63\bulkuseradd\controller\acp_upload_controller
@@ -37,6 +40,13 @@ services:
             - '@passwords.manager'
             - '@files.factory'
             - '@david63.bulkuseradd.classes.read_filter'
+            - '@david63.bulkuseradd.core.functions'
+            - '%tables%'
+
+    david63.bulkuseradd.core.functions:
+        class: david63\bulkuseradd\core\functions
+        arguments:
+            - '@ext.manager'
 
     david63.bulkuseradd.classes.read_filter:
         class: david63\bulkuseradd\classes\read_filter

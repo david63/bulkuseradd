@@ -21,10 +21,8 @@ use phpbb\language\language;
 use phpbb\db\driver\driver_interface;
 use phpbb\passwords\manager;
 use phpbb\files\factory;
-
 use david63\bulkuseradd\classes\read_filter;
-use david63\bulkuseradd\ext;
-
+use david63\bulkuseradd\core\functions;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
@@ -72,6 +70,12 @@ class acp_upload_controller implements acp_upload_interface
 	/** @var \david63\bulkuseradd\classes\read_filter */
 	protected $read_filter;
 
+	/** @var \david63\bulkuseradd\core\functions */
+	protected $functions;
+
+	/** @var string phpBB tables */
+	protected $tables;
+
 	/** @var allowed_extensions */
 	protected $allowed_extensions = array(
 		'xls',
@@ -99,11 +103,13 @@ class acp_upload_controller implements acp_upload_interface
 	* @param \phpbb\passwords\manager							$passwords_manager	Password object
 	* @param factory											$files_factory		File object
 	* @param \david63\david63\spreadsheet\classes\read_filter	read_filter			Methods for the extension
+	* @param \david63\bulkuseradd\core\functions				functions			Functions for the extension
+	* @param array												$tables				phpBB db tables
 	*
 	* @return \david63\bulkuseradd\controller\acp_upload_controller
 	* @access public
 	*/
-	public function __construct(config $config, service $cache, request $request, template $template, user $user, log $log, language $language, driver_interface $db, $root_path, $php_ext, manager $passwords_manager, factory $files_factory, read_filter $read_filter)
+	public function __construct(config $config, service $cache, request $request, template $template, user $user, log $log, language $language, driver_interface $db, $root_path, $php_ext, manager $passwords_manager, factory $files_factory, read_filter $read_filter, functions $functions, $tables)
 	{
 		$this->config				= $config;
 		$this->cache				= $cache;
@@ -118,6 +124,8 @@ class acp_upload_controller implements acp_upload_interface
 		$this->passwords_manager	= $passwords_manager;
 		$this->files_factory		= $files_factory;
 		$this->read_filter			= $read_filter;
+		$this->functions			= $functions;
+		$this->tables				= $tables;
 	}
 
 	/**
@@ -134,6 +142,8 @@ class acp_upload_controller implements acp_upload_interface
 		// Create a form key for preventing CSRF attacks
 		$form_key = 'bulkuseradd';
 		add_form_key($form_key);
+
+		$back = false;
 
 		$submit = $this->request->variable('submit', '');
 
@@ -179,7 +189,7 @@ class acp_upload_controller implements acp_upload_interface
 			// Are there any other errors?
 			if (sizeof($upload_file->error) && $upload_file->get('uploadname'))
 			{
-				trigger_error(implode('<br />', $upload_file->error));
+				trigger_error(implode('<br>', $upload_file->error));
 			}
 
 			// Update the config table
@@ -250,7 +260,7 @@ class acp_upload_controller implements acp_upload_interface
 
 			// Find the group_id for the Registered Users group
 			$sql = 'SELECT group_id
-				FROM ' . GROUPS_TABLE . "
+				FROM ' . $this->tables['groups'] . "
 				WHERE group_name = '" . $this->db->sql_escape('REGISTERED') . "'
 					AND group_type = " . GROUP_SPECIAL;
 
@@ -271,7 +281,7 @@ class acp_upload_controller implements acp_upload_interface
 					$username_clean = utf8_clean_string($data[$username_column]);
 
 					$sql = 'SELECT username_clean
-						FROM ' . USERS_TABLE . "
+						FROM ' . $this->tables['users'] . "
 						WHERE username_clean = '" . $this->db->sql_escape($username_clean) . "'";
 
 					$result	= $this->db->sql_query($sql);
@@ -359,7 +369,12 @@ class acp_upload_controller implements acp_upload_interface
 			'HEAD_TITLE'		=> $this->language->lang('UPLOAD'),
 			'HEAD_DESCRIPTION'	=> $this->language->lang('UPLOAD_EXPLAIN'),
 
-			'VERSION_NUMBER'	=> ext::BULK_USER_ADD_VERSION,
+			'NAMESPACE'			=> $this->functions->get_ext_namespace('twig'),
+
+			'S_BACK'			=> $back,
+			'S_VERSION_CHECK'	=> $this->functions->version_check(),
+
+			'VERSION_NUMBER'	=> $this->functions->get_this_version(),
 		));
 
 		$form_enctype	= (@ini_get('file_uploads') == '0' || strtolower(@ini_get('file_uploads')) == 'off') ? '' : ' enctype="multipart/form-data"';

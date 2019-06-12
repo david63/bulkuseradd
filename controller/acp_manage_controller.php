@@ -17,8 +17,7 @@ use phpbb\template\template;
 use phpbb\user;
 use phpbb\log\log;
 use phpbb\language\language;
-
-use david63\bulkuseradd\ext;
+use david63\bulkuseradd\core\functions;
 
 /**
 * Admin manage controller
@@ -43,23 +42,27 @@ class acp_manage_controller implements acp_manage_interface
 	/** @var \phpbb\language\language */
 	protected $language;
 
+	/** @var \david63\bulkuseradd\core\functions */
+	protected $functions;
+
 	/** @var string Custom form action */
 	protected $u_action;
 
 	/**
 	* Constructor for admin manage controller
 	*
-	* @param \phpbb\config\config		$config			Config object
-	* @param \phpbb\request\request		$request		Request object
-	* @param \phpbb\template\template	$template		Template object
-	* @param \phpbb\user				$user			User object
-	* @param \phpbb\log\log				$log			Log object
-	* @param \phpbb\language\language	$language		Language object
+	* @param \phpbb\config\config					$config			Config object
+	* @param \phpbb\request\request					$request		Request object
+	* @param \phpbb\template\template				$template		Template object
+	* @param \phpbb\user							$user			User object
+	* @param \phpbb\log\log							$log			Log object
+	* @param \phpbb\language\language				$language		Language object
+	* @param \david63\bulkuseradd\core\functions	functions		Functions for the extension
 	*
 	* @return \david63\bulkuseradd\controller\acp_manage_controller
 	* @access public
 	*/
-	public function __construct(config $config, request $request, template $template, user $user, log $log, language $language)
+	public function __construct(config $config, request $request, template $template, user $user, log $log, language $language, functions $functions)
 	{
 		$this->config		= $config;
 		$this->request		= $request;
@@ -67,6 +70,7 @@ class acp_manage_controller implements acp_manage_interface
 		$this->user			= $user;
 		$this->log			= $log;
 		$this->language		= $language;
+		$this->functions	= $functions;
 	}
 
 	/**
@@ -84,6 +88,8 @@ class acp_manage_controller implements acp_manage_interface
 		// Create a form key for preventing CSRF attacks
 		$form_key = 'bulkuseradd';
 		add_form_key($form_key);
+
+		$back = false;
 
 		// Is the form being submitted
 		if ($this->request->is_set_post('submit'))
@@ -111,7 +117,12 @@ class acp_manage_controller implements acp_manage_interface
 			'HEAD_TITLE'		=> $this->language->lang('BULK_USER_ADD_MANAGE'),
 			'HEAD_DESCRIPTION'	=> $this->language->lang('BULK_USER_ADD_MANAGE_EXPLAIN'),
 
-			'VERSION_NUMBER'	=> ext::BULK_USER_ADD_VERSION,
+			'NAMESPACE'			=> $this->functions->get_ext_namespace('twig'),
+
+			'S_BACK'			=> $back,
+			'S_VERSION_CHECK'	=> $this->functions->version_check(),
+
+			'VERSION_NUMBER'	=> $this->functions->get_this_version(),
 		));
 
 		$this->template->assign_vars(array(

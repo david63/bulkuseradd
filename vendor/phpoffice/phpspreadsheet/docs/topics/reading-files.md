@@ -456,7 +456,7 @@ file across several individual worksheets.
 $inputFileType = 'Csv';
 $inputFileName = './sampleData/example2.csv';
 
-echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
+echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br>';
 /**  Create a new Reader of the type defined in $inputFileType  **/
 $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
 
@@ -675,9 +675,9 @@ $worksheetData = $reader->listWorksheetInfo($inputFileName);
 echo '<h3>Worksheet Information</h3>';
 echo '<ol>';
 foreach ($worksheetData as $worksheet) {
-    echo '<li>', $worksheet['worksheetName'], '<br />';
+    echo '<li>', $worksheet['worksheetName'], '<br>';
     echo 'Rows: ', $worksheet['totalRows'],
-         ' Columns: ', $worksheet['totalColumns'], '<br />';
+         ' Columns: ', $worksheet['totalColumns'], '<br>';
     echo 'Cell Range: A1:',
     $worksheet['lastColumnLetter'], $worksheet['totalRows'];
     echo '</li>';

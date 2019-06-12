@@ -1,47 +1,46 @@
-{% include 'overall_header.html' %}
-{% include '@david63_bulkuseradd/head_panel.html' %}
+{% include '@' ~ NAMESPACE ~ '/head_panel.html' %}
 
 <form id="bulkuseradd" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('BUA_SETTINGS') }}</legend>
 
 		<dl>
-			<dt><label for="bua_sheet_name">{{ lang('SHEET_NAME') }}{{ lang('COLON') }}</label><br /><span>{{ lang('SHEET_NAME_EXPLAIN') }}</span></dt>
+			<dt><label for="bua_sheet_name">{{ lang('SHEET_NAME') }}{{ lang('COLON') }}</label><br><span>{{ lang('SHEET_NAME_EXPLAIN') }}</span></dt>
 			<dd>
 				<input class="textbox" name="bua_sheet_name" type="text" id="bua_sheet_name" value="{{ SHEET_NAME }}" size="20" maxlength="20" validate="string" />
 			</dd>
 		</dl>
 
 		<dl>
-			<dt><label for="bua_first_data_row">{{ lang('FIRST_DATA_ROW') }}{{ lang('COLON') }}</label><br /><span>{{ lang('FIRST_DATA_ROW_EXPLAIN') }}</span></dt>
+			<dt><label for="bua_first_data_row">{{ lang('FIRST_DATA_ROW') }}{{ lang('COLON') }}</label><br><span>{{ lang('FIRST_DATA_ROW_EXPLAIN') }}</span></dt>
 			<dd>
 				<input class="textbox" name="bua_first_data_row" type="number" id="bua_first_data_row" value="{{ FIRST_DATA_ROW }}" min="1" max="1048576" />
 			</dd>
 		</dl>
 
 		<dl>
-			<dt><label for="bua_username_column">{{ lang('USERNAME_COLUMN') }}{{ lang('COLON') }}</label><br /><span>{{ lang('USERNAME_COLUMN_EXPLAIN') }}</span></dt>
+			<dt><label for="bua_username_column">{{ lang('USERNAME_COLUMN') }}{{ lang('COLON') }}</label><br><span>{{ lang('USERNAME_COLUMN_EXPLAIN') }}</span></dt>
 			<dd>
 				<input class="textbox" name="bua_username_column" type="text" id="bua_username_column" value="{{ USERNAME_COLUMN }}" size="3" maxlength="3" validate="string" />
 			</dd>
 		</dl>
 
 		<dl>
-			<dt><label for="bua_email_column">{{ lang('EMAIL_COLUMN') }}{{ lang('COLON') }}</label><br /><span>{{ lang('EMAIL_COLUMN_EXPLAIN') }}</span></dt>
+			<dt><label for="bua_email_column">{{ lang('EMAIL_COLUMN') }}{{ lang('COLON') }}</label><br><span>{{ lang('EMAIL_COLUMN_EXPLAIN') }}</span></dt>
 			<dd>
 				<input class="textbox" name="bua_email_column" type="text" id="bua_email_column" value="{{ EMAIL_COLUMN }}" size="3" maxlength="3" validate="string" />
 			</dd>
 		</dl>
 
 		<dl>
-			<dt><label for="bua_start_date_column">{{ lang('START_DATE_COLUMN') }}{{ lang('COLON') }}</label><br /><span>{{ lang('START_DATE_COLUMN_EXPLAIN') }}</span></dt>
+			<dt><label for="bua_start_date_column">{{ lang('START_DATE_COLUMN') }}{{ lang('COLON') }}</label><br><span>{{ lang('START_DATE_COLUMN_EXPLAIN') }}</span></dt>
 			<dd>
 				<input class="textbox" name="bua_start_date_column" type="text" id="bua_start_date_column" value="{{ START_DATE_COLUMN }}" size="3" maxlength="3" validate="string" />
 			</dd>
 		</dl>
 
 		<dl>
-			<dt><label for="bua_date_type">{{ lang('DATE_TYPE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('DATE_TYPE_EXPLAIN') }}</span></dt>
+			<dt><label for="bua_date_type">{{ lang('DATE_TYPE') }}{{ lang('COLON') }}</label><br><span>{{ lang('DATE_TYPE_EXPLAIN') }}</span></dt>
 			<dd>
 				<input type="radio" id="bua_date_type1" name="bua_date_type" value="1"{% if DATE_TYPE %} checked="checked"{% endif %} />
 				<label class="set" for="bua_date_type1">{{ lang('EUROPEAN') }}</label>
@@ -61,5 +60,4 @@
 	</fieldset>
 </form>
 
-{% include '@david63_bulkuseradd/donate.html' %}
-{% include 'overall_footer.html' %}
+{% include '@' ~ NAMESPACE ~ '/donate.html' %}

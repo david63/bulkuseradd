@@ -23,7 +23,7 @@ $spreadsheet->getProperties()->setCreator('Maarten Balliauw')
 $helper->log('Add some data');
 
 $html1 = '<font color="#0000ff">
-<h1 align="center">My very first example of rich text<br />generated from html markup</h1>
+<h1 align="center">My very first example of rich text<br>generated from html markup</h1>
 <p>
 <font size="14" COLOR="rgb(0,255,128)">
 <b>This block</b> contains an <i>italicized</i> word;

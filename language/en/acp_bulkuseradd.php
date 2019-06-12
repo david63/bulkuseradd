@@ -43,7 +43,7 @@ $lang = array_merge($lang, array(
 	'CONFIG_NOT_SET'				=> 'Config options not set',
 
 	'DATE_TYPE'						=> 'Date format',
-	'DATE_TYPE_EXPLAIN'				=> 'Is the date in European or US format?<br />This only applies to CSV files.',
+	'DATE_TYPE_EXPLAIN'				=> 'Is the date in European or US format?<br>This only applies to CSV files.',
 	'DISALLOWED_EXTENSION'			=> 'The selected filetype is not allowed',
 
 	'EMAIL_COLUMN'					=> 'Email column',
@@ -65,12 +65,14 @@ $lang = array_merge($lang, array(
 	'LAST_FILE'						=> '<strong>The last file uploaded was - %1$s on %2$s</strong>',
 	'LAST_UPDATE'					=> '<strong>The last file update was on %1$s</strong>',
 
+	'NEW_VERSION'					=> 'New Version',
+	'NEW_VERSION_EXPLAIN'			=> 'There is a newer version of this extension available.',
 	'NO_FILE'						=> '<strong>No file uploaded</strong>',
 	'NO_FILE_UPLOAD_SELECTED'		=> 'No file selected to upload.',
 	'NO_UPDATE'						=> '<strong>No update done.</strong>',
 
-	'PHP_SIZE_NA'					=> 'The attachment’s file size is too large.<br />Could not determine the maximum size defined by PHP in php.ini.',
-	'PHP_SIZE_OVERRUN'				=> 'The attachment’s file size is too large.<br />Please note this is set in php.ini and cannot be overridden.',
+	'PHP_SIZE_NA'					=> 'The attachment’s file size is too large.<br>Could not determine the maximum size defined by PHP in php.ini.',
+	'PHP_SIZE_OVERRUN'				=> 'The attachment’s file size is too large.<br>Please note this is set in php.ini and cannot be overridden.',
 
 	'UPDATE_ALREADY_DONE'			=> 'The last uploaded file has already been updated.',
 	'UPLOAD'						=> 'Upload & process file',
@@ -89,7 +91,7 @@ $lang = array_merge($lang, array(
 	'SHEET_NAME'					=> 'Sheet name',
 	'SHEET_NAME_EXPLAIN'			=> 'The spreadsheet sheet that contains the data.',
 	'START_DATE_COLUMN'				=> 'Start date column',
-	'START_DATE_COLUMN_EXPLAIN'		=> 'The column letter of the spreadsheet that contians the user’s Start Date.<br />If this field is left blank, or there is no entry for a user in this column, then the current date will be used.',
+	'START_DATE_COLUMN_EXPLAIN'		=> 'The column letter of the spreadsheet that contians the user’s Start Date.<br>If this field is left blank, or there is no entry for a user in this column, then the current date will be used.',
     'STORE_FOLDER_NOT_WRITABLE'		=> 'The store folder is either missing or is not writable',
 
 	'VERSION'						=> 'Version',

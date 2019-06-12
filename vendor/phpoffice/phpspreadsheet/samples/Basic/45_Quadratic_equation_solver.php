@@ -16,7 +16,7 @@ require __DIR__ . '/../Header.php';
             <td><input name="C" type="text" size="8" value="<?php echo (isset($_POST['C'])) ? htmlentities($_POST['C']) : ''; ?>"></td>
         </tr>
     </table>
-    <input name="submit" type="submit" value="calculate"><br />
+    <input name="submit" type="submit" value="calculate"><br>
     If A=0, the equation is not quadratic.
 </form>
 
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         $helper->log('The equation is not quadratic');
     } else {
         // Calculate and Display the results
-        $helper->log('<hr /><b>Roots:</b><br />');
+        $helper->log('<hr><b>Roots:</b><br>');
 
         $discriminantFormula = '=POWER(' . $_POST['B'] . ',2) - (4 * ' . $_POST['A'] . ' * ' . $_POST['C'] . ')';
         $discriminant = Calculation::getInstance()->calculateFormula($discriminantFormula);
