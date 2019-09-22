@@ -135,7 +135,7 @@ class acp_upload_controller implements acp_upload_interface
 	public function upload_file()
 	{
 		// Add the language file
-		$this->language->add_lang('acp_bulkuseradd', 'david63/bulkuseradd');
+		$this->language->add_lang('acp_bulkuseradd', $this->functions->get_ext_namespace());
 
 		// Create a form key for preventing CSRF attacks
 		$form_key = 'bulkuseradd';

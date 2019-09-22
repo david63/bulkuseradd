@@ -80,8 +80,7 @@ class acp_manage_controller implements acp_manage_interface
 	public function display_options()
 	{
 		// Add the language files
-		$this->language->add_lang('acp_bulkuseradd', 'david63/bulkuseradd');
-		$this->language->add_lang('donate', 'david63/bulkuseradd');
+		$this->language->add_lang('acp_bulkuseradd', $this->functions->get_ext_namespace());
 
 		// Create a form key for preventing CSRF attacks
 		$form_key = 'bulkuseradd';

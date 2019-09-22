@@ -21,7 +21,7 @@
 		"phpoffice/phpspreadsheet": "^1.5"
     },
 	"extra": {
-		"display-name": "[+] Bulk User Add",
+		"display-name": "[*] Bulk User Add",
 		"soft-require": {
 			"phpbb/phpbb": ">=3.2.0"
 		},
