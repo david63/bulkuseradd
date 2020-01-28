@@ -7,13 +7,11 @@ Adds the ability to add users from an Excel spreadsheet or a CSV file.
 [![Latest Stable Version](https://poser.pugx.org/david63/bulkuseradd/v/stable)](https://packagist.org/packages/david63/bulkuseradd)
 [![Latest Unstable Version](https://poser.pugx.org/david63/bulkuseradd/v/unstable)](https://packagist.org/packages/david63/bulkuseradd)
 [![Total Downloads](https://poser.pugx.org/david63/bulkuseradd/downloads)](https://packagist.org/packages/david63/bulkuseradd)
-
-![Screenshot](credit_page_user.jpg)
-![Screenshot](credits_page_admin.jpg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f82f66a5d5b459491425de15a257cd2)](https://www.codacy.com/manual/david63/bulkuseradd?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=david63/bulkuseradd&amp;utm_campaign=Badge_Grade)
 
 ## Minimum Requirements
-* phpBB 3.2.0
-* PHP 5.4
+* phpBB 3.3.0
+* PHP 7.1.3
 
 ## Install
 1. [Download the latest release](https://github.com/david63/bulkuseradd/archive/3.2.zip) and unzip it.
@@ -35,4 +33,4 @@ Adds the ability to add users from an Excel spreadsheet or a CSV file.
 ## License
 [GNU General Public License v2](http://opensource.org/licenses/GPL-2.0)
 
-© 2019 - David Wood
+© 2020 - David Wood

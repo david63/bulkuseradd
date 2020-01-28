@@ -134,8 +134,9 @@ class acp_upload_controller implements acp_upload_interface
 	*/
 	public function upload_file()
 	{
-		// Add the language file
+		// Add the language files
 		$this->language->add_lang('acp_bulkuseradd', $this->functions->get_ext_namespace());
+		$this->language->add_lang('acp_common', $this->functions->get_ext_namespace());
 
 		// Create a form key for preventing CSRF attacks
 		$form_key = 'bulkuseradd';
@@ -212,9 +213,9 @@ class acp_upload_controller implements acp_upload_interface
 			}
 
 			// Check that update has not already been done
-			if ($this->config['bua_update_file_date'] > $this->config['bua_upload_file_date'])
+			//if ($this->config['bua_update_file_date'] > $this->config['bua_upload_file_date'])
 			{
-				trigger_error($this->language->lang('UPDATE_ALREADY_DONE') . adm_back_link($this->u_action), E_USER_WARNING);
+				//trigger_error($this->language->lang('UPDATE_ALREADY_DONE') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
 
 			// Let's start by getting the variables
@@ -275,6 +276,17 @@ class acp_upload_controller implements acp_upload_interface
 			{
 				if ($row >= $first_data_row && $row <= $spreadsheet->getActiveSheet()->getHighestRow())
 				{
+					if (strtolower($input_file_type) == 'csv')
+					{
+						$data = explode($this->config['bua_csv_delimiter'], $data[$this->config['bua_username_column']]);
+						$data[$this->config['bua_username_column']] = $data[0];
+						unset($data[0]);
+						$data[$this->config['bua_email_column']] = $data[1];
+						unset($data[1]);
+						$data[$this->config['bua_start_date_column']] = $data[2];
+						unset($data[2]);
+					}
+
 					// Check that the username does not already exist in the db
 					$username_clean = utf8_clean_string($data[$username_column]);
 
@@ -292,56 +304,66 @@ class acp_upload_controller implements acp_upload_interface
 					{
 						// Add log entry if username exists
 						$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_BULK_USER_ADD_FAILED', time(), array($data[$username_column]));
-						continue;
 					}
-					else if (!$data[$username_column])
+					else if (!empty($data[$username_column]) || !empty($data[$email_column]))
 					{
-						// Add log entry if no username present
-						$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_BULK_USER_ADD_NO_USERNAME', time(), array($data[$email_column]));
-						continue;
-					}
-					else if (!$data[$email_column])
-					{
-						// Add log entry if no email present
-						$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_BULK_USER_ADD_NO_EMAIL', time(), array($data[$username_column]));
-						continue;
-					}
-					else // We are OK to process the data
-					{
-						$user_row = array(
-							'username'		=> $data[$username_column],
-							'user_password'	=> $this->passwords_manager->hash($data[$username_column]),
-							'user_email'	=> $data[$email_column],
-							'group_id'		=> $group_id,
-							'user_type'		=> USER_NORMAL,
-							'user_new'		=> 1,
-							// Set this to force password change when logging in
-							'user_bulk_add'	=> 1,
-						);
-
-						//Let's deal with the start date
-						if ($start_date_column && $data[$start_date_column])
+						if (empty($data[$username_column]))
 						{
-							// Is the date from a CSV or Excel file?
-							if (is_string($data[$start_date_column]))
+							// Add log entry if no username present
+							$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_BULK_USER_ADD_NO_USERNAME', time(), array($data[$email_column]));
+						}
+						else if (empty($data[$email_column]))
+						{
+							// Add log entry if no email present
+							$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_BULK_USER_ADD_NO_EMAIL', time(), array($data[$username_column]));
+						}
+
+						else // We are OK to process the data
+						{
+							$user_row = array(
+								'username'		=> $data[$username_column],
+								'user_password'	=> $this->passwords_manager->hash($data[$username_column]),
+								'user_email'	=> $data[$email_column],
+								'group_id'		=> $group_id,
+								'user_type'		=> USER_NORMAL,
+								'user_new'		=> 1,
+								'user_ip'		=> $this->user->ip,
+								// Set this to force password change when logging in
+								'user_bulk_add'	=> 1,
+							);
+
+							//Let's deal with the start date
+							if ($start_date_column)
 							{
-								// Get the date into the correct format
-								$data[$start_date_column] = ($this->config['bua_date_type']) ? str_replace('/', '-', $data[$start_date_column]) : str_replace('-', '/', $data[$start_date_column]);
-								$start_date = strtotime($data[$start_date_column]);
-							}
-							else
-							{
-								// Convert the Excel date into Unix timestamp
-								$start_date = Date::excelToTimestamp($data[$start_date_column]);
+								if (!is_numeric($data[$start_date_column]))
+								{
+									// Is the date from a CSV or Excel file?
+									if (is_string($data[$start_date_column]))
+									{
+										// Get the date into the correct format
+										$data[$start_date_column] = ($this->config['bua_date_type']) ? str_replace('/', '-', $data[$start_date_column]) : str_replace('-', '/', $data[$start_date_column]);
+										$start_date = strtotime($data[$start_date_column]);
+									}
+									else
+									{
+										// Convert the Excel date into Unix timestamp
+										$start_date = Date::excelToTimestamp($data[$start_date_column]);
+									}
+								}
+								else
+								{
+									$start_date = $data[$start_date_column];
+								}
+
+								$user_row['user_regdate'] = $start_date;
+								// We'll set passchg date as well just in case the board is using this
+								$user_row['user_passchg'] = $start_date;
 							}
 
-							$user_row['user_regdate'] = $start_date;
-							// We'll set passchg date as well just in case the board is using this
-							$user_row['user_passchg'] = $start_date;
+							// Add the user
+							user_add($user_row);
+							$users_added++;
 						}
-						// Add the user
-						user_add($user_row);
-						$users_added++;
 					}
 				}
 			}
@@ -363,16 +385,20 @@ class acp_upload_controller implements acp_upload_interface
 		}
 
 		// Template vars for header panel
+		$version_data	= $this->functions->version_check();
+
 		$this->template->assign_vars(array(
+			'DOWNLOAD'			=> (array_key_exists('download', $version_data)) ? '<a class="download" href =' . $version_data['download'] . '>' . $this->language->lang('NEW_VERSION_LINK') . '</a>' : '',
+
 			'HEAD_TITLE'		=> $this->language->lang('UPLOAD'),
 			'HEAD_DESCRIPTION'	=> $this->language->lang('UPLOAD_EXPLAIN'),
 
 			'NAMESPACE'			=> $this->functions->get_ext_namespace('twig'),
 
 			'S_BACK'			=> $back,
-			'S_VERSION_CHECK'	=> $this->functions->version_check(),
+			'S_VERSION_CHECK'	=> (array_key_exists('current', $version_data)) ? $version_data['current'] : false,
 
-			'VERSION_NUMBER'	=> $this->functions->get_this_version(),
+			'VERSION_NUMBER'	=> $this->functions->get_meta('version'),
 		));
 
 		$form_enctype	= (@ini_get('file_uploads') == '0' || strtolower(@ini_get('file_uploads')) == 'off') ? '' : ' enctype="multipart/form-data"';

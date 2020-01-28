@@ -41,6 +41,8 @@ $lang = array_merge($lang, array(
 	'BULK_USER_ADD_MANAGE_EXPLAIN'	=> 'Here you can enter the settings that are required to process the uploaded file.',
 
 	'CONFIG_NOT_SET'				=> 'Config options not set',
+	'CSV_DELIMITER'					=> 'CSV delimiter',
+	'CSV_DELIMITER_EXPLAIN'			=> 'The delimiter character in the CSV file.',
 
 	'DATE_TYPE'						=> 'Date format',
 	'DATE_TYPE_EXPLAIN'				=> 'Is the date in European or US format?<br>This only applies to CSV files.',
@@ -65,8 +67,6 @@ $lang = array_merge($lang, array(
 	'LAST_FILE'						=> '<strong>The last file uploaded was - %1$s on %2$s</strong>',
 	'LAST_UPDATE'					=> '<strong>The last file update was on %1$s</strong>',
 
-	'NEW_VERSION'					=> 'New Version',
-	'NEW_VERSION_EXPLAIN'			=> 'There is a newer version of this extension available.',
 	'NO_FILE'						=> '<strong>No file uploaded</strong>',
 	'NO_FILE_UPLOAD_SELECTED'		=> 'No file selected to upload.',
 	'NO_UPDATE'						=> '<strong>No update done.</strong>',
@@ -93,6 +93,4 @@ $lang = array_merge($lang, array(
 	'START_DATE_COLUMN'				=> 'Start date column',
 	'START_DATE_COLUMN_EXPLAIN'		=> 'The column letter of the spreadsheet that contians the user’s Start Date.<br>If this field is left blank, or there is no entry for a user in this column, then the current date will be used.',
 	'STORE_FOLDER_NOT_WRITABLE'		=> 'The store folder is either missing or is not writable',
-
-	'VERSION'						=> 'Version',
 ));

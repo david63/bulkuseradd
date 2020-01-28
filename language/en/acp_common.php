@@ -36,15 +36,19 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
-	'BULK_USER_ADD'						=> 'Bulk user add',
-	'BULK_USER_ADD_MANAGE'				=> 'Bulk user add settings',
-	'BULK_USER_ADD_UPLOAD'				=> 'Bulk user add process',
 
-	'LOG_BULK_USER_ADD'					=> '<strong>Bulk User Add settings updated</strong>',
-	'LOG_BULK_USER_ADD_FAILED'			=> '<strong>Bulk User Add - user already exists</strong><br>» %1$s',
-	'LOG_BULK_USER_ADD_FILE_UPLOADED'	=> '<strong>Bulk User Add file uploaded</strong><br>» %1$s as %2$s',
-	'LOG_BULK_USER_ADD_NO_EMAIL'		=> '<strong>Bulk User Add - there is no email address for username</strong><br>» %1$s',
-	'LOG_BULK_USER_ADD_NO_USERNAME'		=> '<strong>Bulk User Add - there is no username for email</strong><br>» %1$s',
-	'LOG_BULK_USER_ADD_PROCESSED'		=> '<strong>Bulk User Add file processed</strong><br>» %1$s<br> %2$s <strong>users added</strong>',
+$lang = array_merge($lang, array(
+	'DONATE'					=> 'Donate',
+	'DONATE_EXTENSIONS'			=> 'Donate to my extensions',
+	'DONATE_EXTENSIONS_EXPLAIN'	=> 'This extension, as with all of my extensions, is totally free of charge. If you have benefited from using it then please consider making a donation by clicking the PayPal donation button opposite - I would appreciate it. I promise that there will be no spam nor requests for further donations, although they would always be welcome.',
+
+	'NEW_VERSION'				=> 'New Version - %s',
+	'NEW_VERSION_EXPLAIN'		=> 'Version %1$s of this extension is now available for download.<br>%2$s',
+	'NEW_VERSION_LINK'			=> 'Download here',
+	'NO_VERSION_EXPLAIN'		=> 'Version update information is not available.',
+
+	'PAYPAL_BUTTON'				=> 'Donate with PayPal button',
+	'PAYPAL_TITLE'				=> 'PayPal - The safer, easier way to pay online!',
+
+	'VERSION'					=> 'Version',
 ));

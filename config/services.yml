@@ -1,6 +1,5 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: phpbb_tables.yml }
 
 services:
     david63.bulkuseradd.listener:

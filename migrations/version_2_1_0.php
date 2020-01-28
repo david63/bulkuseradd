@@ -17,6 +17,7 @@ class version_2_1_0 extends migration
 	{
 		return array(
 			// Add the config variables
+			array('config.add', array('bua_csv_delimiter', ',')),
 			array('config.add', array('bua_date_type', 1)),
 			array('config.add', array('bua_email_column', '')),
 			array('config.add', array('bua_first_data_row', 1)),

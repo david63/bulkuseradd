@@ -48,6 +48,13 @@
 				<label class="set" for="bua_date_type0">{{ lang('USA') }}</label>
 			</dd>
 		</dl>
+
+		<dl>
+			<dt><label for="bua_csv_delimiter">{{ lang('CSV_DELIMITER') }}{{ lang('COLON') }}</label><br><span>{{ lang('CSV_DELIMITER_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="bua_csv_delimiter" type="text" id="bua_csv_delimiter" value="{{ CSV_DELIMITER }}" size="3" maxlength="3" validate="string" />
+			</dd>
+		</dl>
 	</fieldset>
 
 	<fieldset>
