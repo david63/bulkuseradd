@@ -132,7 +132,7 @@ class listener implements EventSubscriberInterface
 		// Is this a bulk added user?
 		$sql = 'SELECT user_bulk_add
 			FROM ' . $this->tables['users'] . '
-			WHERE user_id = ' . $user_id;
+			WHERE user_id = ' . (int) $user_id;
 
 		$result 		= $this->db->sql_query($sql);
 		$row 			= $this->db->sql_fetchrow($result);
