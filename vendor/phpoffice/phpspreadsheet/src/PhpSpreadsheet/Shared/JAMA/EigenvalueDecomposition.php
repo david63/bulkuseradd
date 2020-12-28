@@ -783,7 +783,7 @@ class EigenvalueDecomposition
      */
     public function __construct($Arg)
     {
-        $this->A = $Arg->getArray();
+        $this->A = $Arg->get[];
         $this->n = $Arg->getColumnDimension();
 
         $issymmetric = true;

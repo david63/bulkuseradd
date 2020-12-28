@@ -567,7 +567,7 @@ class MathTrig
         try {
             $matrix = new Matrix($matrixData);
 
-            return $matrix->inverse()->getArray();
+            return $matrix->inverse()->get[];
         } catch (PhpSpreadsheetException $ex) {
             return Functions::VALUE();
         }
@@ -629,7 +629,7 @@ class MathTrig
                 return Functions::VALUE();
             }
 
-            return $matrixA->times($matrixB)->getArray();
+            return $matrixA->times($matrixB)->get[];
         } catch (PhpSpreadsheetException $ex) {
             return Functions::VALUE();
         }

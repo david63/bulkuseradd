@@ -51,7 +51,7 @@ class CholeskyDecomposition
      */
     public function __construct(Matrix $A)
     {
-        $this->L = $A->getArray();
+        $this->L = $A->get[];
         $this->m = $A->getRowDimension();
 
         for ($i = 0; $i < $this->m; ++$i) {

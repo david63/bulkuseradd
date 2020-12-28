@@ -53,3 +53,6 @@ services:
             - '%start_row%'
             - '%end_row%'
             - '%columns%'
+
+    _defaults:
+        public: true

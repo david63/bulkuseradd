@@ -2,12 +2,16 @@
 
 Adds the ability to add users from an Excel spreadsheet or a CSV file.
 
-[![Build Status](https://travis-ci.com/david63/bulkuseradd.svg?branch=master)](https://travis-ci.com/david63/bulkuseradd)
+[![Build Status](https://github.com/david63/bulkuseradd/workflows/Tests/badge.svg)](https://github.com/phpbb-extensions/david63/bulkuseradd)
 [![License](https://poser.pugx.org/david63/bulkuseradd/license)](https://packagist.org/packages/david63/bulkuseradd)
 [![Latest Stable Version](https://poser.pugx.org/david63/bulkuseradd/v/stable)](https://packagist.org/packages/david63/bulkuseradd)
 [![Latest Unstable Version](https://poser.pugx.org/david63/bulkuseradd/v/unstable)](https://packagist.org/packages/david63/bulkuseradd)
 [![Total Downloads](https://poser.pugx.org/david63/bulkuseradd/downloads)](https://packagist.org/packages/david63/bulkuseradd)
+[![codecov](https://codecov.io/gh/david63/bulkuseradd/branch/master/graph/badge.svg?token=D2500PgRex)](https://codecov.io/gh/david63/bulkuseradd)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f82f66a5d5b459491425de15a257cd2)](https://www.codacy.com/manual/david63/bulkuseradd?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=david63/bulkuseradd&amp;utm_campaign=Badge_Grade)
+
+ [![Compatible](https://img.shields.io/badge/compatible-phpBB:3.2.x-blue.svg)](https://shields.io/)
+ [![Compatible](https://img.shields.io/badge/compatible-phpBB:3.3.x-blue.svg)](https://shields.io/)
 
 ## Minimum Requirements
 * phpBB 3.3.0

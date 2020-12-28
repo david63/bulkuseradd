@@ -690,6 +690,22 @@ PayPal button
 	font-size: 24px;
 }
 
+.qrimage {
+	display: block;
+	margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.donate-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+}
+
 
 /* ---------
 * show key

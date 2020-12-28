@@ -114,7 +114,7 @@ class Matrix
      *
      * @return array Matrix array
      */
-    public function getArray()
+    public function get[]
     {
         return $this->A;
     }

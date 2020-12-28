@@ -159,7 +159,7 @@ class HashTable
      *
      * @return IComparable[]
      */
-    public function toArray()
+    public function to[]
     {
         return $this->items;
     }

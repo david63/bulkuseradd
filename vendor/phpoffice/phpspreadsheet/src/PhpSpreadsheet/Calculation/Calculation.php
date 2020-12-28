@@ -3753,7 +3753,7 @@ class Calculation
                                 $matrix = new Shared\JAMA\Matrix($operand1);
                                 //    Perform the required operation against the operand 1 matrix, passing in operand 2
                                 $matrixResult = $matrix->concat($operand2);
-                                $result = $matrixResult->getArray();
+                                $result = $matrixResult->get[];
                             } catch (\Exception $ex) {
                                 $this->debugLog->writeDebugLog('JAMA Matrix Exception: ', $ex->getMessage());
                                 $result = '#VALUE!';
@@ -3801,7 +3801,7 @@ class Calculation
                     try {
                         $matrix1 = new Shared\JAMA\Matrix($arg);
                         $matrixResult = $matrix1->arrayTimesEquals($multiplier);
-                        $result = $matrixResult->getArray();
+                        $result = $matrixResult->get[];
                     } catch (\Exception $ex) {
                         $this->debugLog->writeDebugLog('JAMA Matrix Exception: ', $ex->getMessage());
                         $result = '#VALUE!';
@@ -4212,7 +4212,7 @@ class Calculation
                 $matrix = new Shared\JAMA\Matrix($operand1);
                 //    Perform the required operation against the operand 1 matrix, passing in operand 2
                 $matrixResult = $matrix->$matrixFunction($operand2);
-                $result = $matrixResult->getArray();
+                $result = $matrixResult->get[];
             } catch (\Exception $ex) {
                 $this->debugLog->writeDebugLog('JAMA Matrix Exception: ', $ex->getMessage());
                 $result = '#VALUE!';

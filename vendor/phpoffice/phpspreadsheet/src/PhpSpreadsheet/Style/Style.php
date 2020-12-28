@@ -328,7 +328,7 @@ class Style extends Supervisor
                             }
                         }
 
-                        // apply region style to region by calling applyFromArray() in simple mode
+                        // apply region style to region by calling applyFrom[] in simple mode
                         $this->getActiveSheet()->getStyle($range)->applyFromArray($regionStyles, false);
                     }
                 }

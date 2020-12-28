@@ -70,7 +70,7 @@ class LUDecomposition
     {
         if ($A instanceof Matrix) {
             // Use a "left-looking", dot-product, Crout/Doolittle algorithm.
-            $this->LU = $A->getArray();
+            $this->LU = $A->get[];
             $this->m = $A->getRowDimension();
             $this->n = $A->getColumnDimension();
             for ($i = 0; $i < $this->m; ++$i) {
